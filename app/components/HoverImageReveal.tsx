@@ -48,33 +48,33 @@ interface HoverImageRevealProps {
 
 const DEFAULT_ITEMS_DATA: { text: string; src: string }[] = [
   {
-    text: "NEW SEASON DROP",
-    src: "https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/8e0d22a8-ac82-4893-90d8-3403f80ec600/w=800",
+    text: "WRITE AND EDIT CODE",
+    src: "./services/img1.png",
   },
   {
-    text: "ESSENTIAL COLLECTION",
-    src: "https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/d6af07a0-4dc5-4de4-07b1-9d2ad6100000/w=800",
+    text: "DESIGN SYSTEM ARCHITECTURE",
+    src: "./services/img2.png",
   },
   {
-    text: "SUMMER EDITION",
-    src: "https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/c083d83a-f5a4-4434-989f-4eaa9bbe7500/w=800",
+    text: "DEBUG AND FIX ERRORS",
+    src: "./services/img3.png",
   },
   {
-    text: "STREET ICONS",
-    src: "https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/93bad0e0-e2ab-4e21-de9c-4cb54b028f00/w=800",
+    text: "REVIEW OTHERS PEOPLE'S CODE",
+    src: "./services/img4.png",
   },
   {
-    text: "PREMIUM DENIM",
-    src: "https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/09a59a65-3c07-4500-f72c-68c824168c00/w=800",
+    text: "MAINTAIN AND UPDATE SOFTWARE",
+    src: "./services/img5.png",
   },
   {
-    text: "ARCHIVE PIECES",
-    src: "https://imagedelivery.net/IEUjvl3YUlxY-MrTpOAWDQ/8e0d22a8-ac82-4893-90d8-3403f80ec600/w=800",
+    text: "MANAGING DATA AND INFRASTRUCTURE",
+    src: "./services/img6.png",
   },
 ];
 
 const DEFAULT_ITEMS: ItemsValue = {
-  itemCount: 5,
+  itemCount: 6,
   item1: {
     text: DEFAULT_ITEMS_DATA[0].text,
     image: { src: DEFAULT_ITEMS_DATA[0].src },
@@ -135,7 +135,7 @@ export default function HoverImageReveal({
   dimColor = "#51565A",
   align = "center",
   rowGap = 30,
-  imageWidth = 300,
+  imageWidth = 400,
   imageHeight = 400,
   rounded = 16,
   offsetX = 200,
@@ -158,7 +158,7 @@ export default function HoverImageReveal({
   const data = items || DEFAULT_ITEMS;
   const count = Math.max(
     1,
-    Math.min(MAX_ITEMS, (data.itemCount as number) || 5)
+    Math.min(MAX_ITEMS, (data.itemCount as number) || 5),
   );
   const list: Item[] = [];
   for (let i = 1; i <= count; i++) {
@@ -281,7 +281,11 @@ export default function HoverImageReveal({
       >
         {list.map((item, i) => {
           const isHovered = hovered === i;
-          const color = anyActive ? (isHovered ? textColor : dimColor) : textColor;
+          const color = anyActive
+            ? isHovered
+              ? textColor
+              : dimColor
+            : textColor;
           const copyStyle: CSSProperties = {
             display: "block",
             color,
@@ -339,4 +343,3 @@ export default function HoverImageReveal({
     </div>
   );
 }
-
